@@ -1,42 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ResQ Design System - iOS-like clean aesthetic with smooth animations */
 
 @layer base {
   :root {
+    /* Light Theme - ResQ Brand Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
+    
+    /* ResQ Brand Colors */
+    --resq-indigo: 238 85% 67%;          /* #6366F1 */
+    --resq-indigo-light: 238 85% 75%;
+    --resq-indigo-dark: 238 85% 55%;
+    --resq-emerald: 160 84% 39%;         /* #10B981 */
+    --resq-emerald-light: 160 84% 50%;
+    --resq-emerald-dark: 160 84% 30%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--resq-indigo)), hsl(var(--resq-emerald)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--resq-indigo) / 0.1), hsl(var(--resq-emerald) / 0.05));
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(220 25% 97%));
+    
+    /* Surfaces */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
+    --card-elevated: 220 25% 98%;
+    
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
+    
+    /* Interactive States */
+    --primary: 238 85% 67%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 238 85% 60%;
+    
+    --secondary: 220 25% 96%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
+    --secondary-hover: 220 25% 92%;
+    
+    --muted: 220 25% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 160 84% 35%;
+    
+    /* Feedback */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 220 25% 90%;
+    --border-subtle: 220 25% 95%;
+    --input: 220 25% 96%;
+    --ring: 238 85% 67%;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(var(--resq-indigo) / 0.05);
+    --shadow-md: 0 4px 16px hsl(var(--resq-indigo) / 0.1);
+    --shadow-lg: 0 10px 40px hsl(var(--resq-indigo) / 0.15);
+    --shadow-glow: 0 0 30px hsl(var(--resq-indigo) / 0.3);
+    
+    /* Glass morphism */
+    --glass: hsla(0, 0%, 100%, 0.8);
+    --glass-border: hsla(220, 25%, 90%, 0.3);
+    
+    --radius: 16px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +95,72 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Dark Theme - Neutral slate background */
+    --background: 215 28% 10%;           /* #0F172A equivalent */
     --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
+    
+    /* Dark theme brand colors remain vibrant */
+    --resq-indigo: 238 85% 67%;
+    --resq-indigo-light: 238 85% 75%;
+    --resq-indigo-dark: 238 85% 55%;
+    --resq-emerald: 160 84% 39%;
+    --resq-emerald-light: 160 84% 50%;
+    --resq-emerald-dark: 160 84% 30%;
+    
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--resq-indigo)), hsl(var(--resq-emerald)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--resq-indigo) / 0.15), hsl(var(--resq-emerald) / 0.08));
+    --gradient-card: linear-gradient(145deg, hsl(215 28% 12%), hsl(215 28% 14%));
+    
+    /* Dark surfaces */
+    --card: 215 28% 12%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
+    --card-elevated: 215 28% 14%;
+    
+    --popover: 215 28% 12%;
     --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
+    
+    /* Interactive states for dark */
+    --primary: 238 85% 67%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 238 85% 75%;
+    
+    --secondary: 215 25% 18%;
     --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
+    --secondary-hover: 215 25% 22%;
+    
+    --muted: 215 25% 16%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
+    
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 160 84% 45%;
+    
+    /* Dark feedback colors */
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Dark borders */
+    --border: 215 25% 20%;
+    --border-subtle: 215 25% 16%;
+    --input: 215 25% 16%;
+    --ring: 238 85% 67%;
+    
+    /* Dark shadows */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 16px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 40px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 30px hsl(var(--resq-indigo) / 0.4);
+    
+    /* Dark glass morphism */
+    --glass: hsla(215, 28%, 10%, 0.8);
+    --glass-border: hsla(215, 25%, 20%, 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +178,162 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* ResQ Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground 
+           px-8 py-4 rounded-full font-semibold text-lg
+           transition-all duration-300 ease-spring
+           hover:shadow-lg hover:shadow-primary/25 hover:scale-105
+           active:scale-95 focus-visible:ring-2 focus-visible:ring-ring;
+    background: var(--gradient-primary);
+  }
+  
+  .btn-secondary {
+    @apply border border-border bg-card text-card-foreground
+           px-6 py-3 rounded-full font-medium
+           transition-all duration-300 ease-spring
+           hover:bg-secondary hover:scale-105
+           active:scale-95 focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  
+  .btn-ghost {
+    @apply text-muted-foreground hover:text-foreground
+           px-4 py-2 rounded-full font-medium
+           transition-all duration-200 ease-spring
+           hover:bg-muted/50;
+  }
+  
+  /* Feature Cards */
+  .feature-card {
+    @apply bg-card border border-border rounded-3xl p-8
+           transition-all duration-300 ease-spring
+           hover:shadow-md hover:shadow-primary/10 hover:-translate-y-2
+           hover:border-primary/20;
+    background: var(--gradient-card);
+  }
+  
+  /* Glass Effect */
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* Smooth Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .scale-in {
+    animation: scaleIn 0.5s ease-spring forwards;
+  }
+  
+  /* Safety Score Pulse */
+  .score-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Scroll Snap */
+  .scroll-snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  .ease-spring {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.5;
   }
 }
