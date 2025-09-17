@@ -22,16 +22,29 @@ export function Footer({ onOpenDevelopersModal }: FooterProps) {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-resq-indigo to-resq-emerald flex items-center justify-center">
-                <span className="text-white font-bold text-sm">R</span>
-              </div>
-              <span className="text-xl font-bold">ResQ</span>
-            </div>
+            <motion.div
+              className="flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <motion.div
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-resq-indigo via-primary to-resq-emerald flex items-center justify-center shadow-lg"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <span className="text-white font-bold text-lg">R</span>
+              </motion.div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                ResQ
+              </span>
+            </motion.div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Predict. Protect. Prove. <br />
-              The future of tourist safety technology.
+              AI-powered tourist safety grid. Predict risks, protect travelers, prove incidents with immutable blockchain evidence.
             </p>
+            <div className="flex items-center space-x-2 text-xs mt-2">
+              <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
+              <span className="text-muted-foreground">Government-ready • Privacy-first</span>
+            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -93,9 +106,21 @@ export function Footer({ onOpenDevelopersModal }: FooterProps) {
             <p className="text-muted-foreground text-sm">
               Ready to revolutionize tourist safety?
             </p>
-            <Button className="btn-secondary">
-              Request Pilot
-            </Button>
+            <motion.div whileHover={{ scale: 1.02 }}>
+              <Button className="btn-hero w-full group">
+                <motion.span
+                  animate={{ x: [0, 2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  Request Pilot
+                </motion.span>
+                <motion.div
+                  className="ml-2 w-2 h-2 bg-white rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
 

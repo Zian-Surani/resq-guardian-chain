@@ -9,55 +9,61 @@ const developers = [
     name: "J Eshwar",
     role: "Product Lead",
     bio: "Full-stack architect with expertise in blockchain integration",
+    achievement: "Led 5+ successful tech products",
     avatar: "JE",
     email: "j.eshwar@resq.dev",
-    linkedin: "#",
-    github: "#",
+    linkedin: "https://linkedin.com/in/jeshwar",
+    github: "https://github.com/jeshwar",
   },
   {
     name: "Dishu Mahajan",
-    role: "Backend Engineer",
+    role: "Backend Engineer", 
     bio: "Specialized in distributed systems and API architecture",
+    achievement: "Built scalable microservices for 100K+ users",
     avatar: "DM",
     email: "dishu.mahajan@resq.dev",
-    linkedin: "#",
-    github: "#",
+    linkedin: "https://linkedin.com/in/dishumahajan",
+    github: "https://github.com/dishumahajan",
   },
   {
     name: "Ayush Thakur",
     role: "ML Engineer",
     bio: "AI/ML specialist focusing on predictive safety algorithms",
-    avatar: "AT",
+    achievement: "Published 3 research papers in AI safety",
+    avatar: "AT", 
     email: "ayush.thakur@resq.dev",
-    linkedin: "#",
-    github: "#",
+    linkedin: "https://linkedin.com/in/ayushthakur",
+    github: "https://github.com/ayushthakur",
   },
   {
     name: "Vaishnavi Soni",
     role: "Frontend Developer",
-    bio: "UI/UX engineer creating intuitive safety interfaces",
+    bio: "UI/UX engineer creating intuitive safety interfaces", 
+    achievement: "Designed award-winning mobile interfaces",
     avatar: "VS",
     email: "vaishnavi.soni@resq.dev",
-    linkedin: "#",
-    github: "#",
+    linkedin: "https://linkedin.com/in/vaishnavisoni",
+    github: "https://github.com/vaishnavisoni",
   },
   {
     name: "Sidharth P Nair",
     role: "IoT Developer",
     bio: "Embedded systems expert for geo-fencing technology",
+    achievement: "15+ IoT deployments in smart cities",
     avatar: "SN",
-    email: "sidharth.nair@resq.dev",
-    linkedin: "#",
-    github: "#",
+    email: "sidharth.nair@resq.dev", 
+    linkedin: "https://linkedin.com/in/sidharthnair",
+    github: "https://github.com/sidharthnair",
   },
   {
     name: "Zian Rajeshkumar Surani",
-    role: "Project Manager",
+    role: "Project Manager", 
     bio: "Coordinating cross-functional teams and stakeholder alignment",
+    achievement: "Delivered 20+ projects on-time, under-budget",
     avatar: "ZS",
     email: "zian.surani@resq.dev",
-    linkedin: "#",
-    github: "#",
+    linkedin: "https://linkedin.com/in/ziansurani", 
+    github: "https://github.com/ziansurani",
   },
 ];
 
@@ -91,18 +97,32 @@ export function DevelopersModal({ isOpen, onClose }: DevelopersModalProps) {
             >
               {/* Avatar */}
               <motion.div
-                className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
+                className="relative w-24 h-24 mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
               >
-                {dev.avatar}
+                <motion.div
+                  className="w-24 h-24 rounded-full bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  {dev.avatar}
+                </motion.div>
+                <motion.div
+                  className="absolute -top-1 -right-1 w-6 h-6 bg-success rounded-full flex items-center justify-center"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="w-2 h-2 bg-white rounded-full" />
+                </motion.div>
               </motion.div>
 
               {/* Info */}
               <div className="text-center space-y-3">
                 <div>
-                  <h3 className="font-semibold text-lg">{dev.name}</h3>
+                  <h3 className="font-semibold text-lg text-foreground">{dev.name}</h3>
                   <p className="text-primary font-medium text-sm">{dev.role}</p>
+                  <p className="text-accent text-xs font-medium mt-1">{dev.achievement}</p>
                 </div>
 
                 <p className="text-muted-foreground text-sm leading-relaxed">

@@ -6,6 +6,7 @@ import { HowItWorksSection } from "@/components/how-it-works-section";
 import { LiveDemoSection } from "@/components/live-demo-section";
 import { TechnologySection } from "@/components/technology-section";
 import { ImpactSection } from "@/components/impact-section";
+import { JudgePackSection } from "@/components/judge-pack-section";
 import { DevelopersModal } from "@/components/developers-modal";
 import { Footer } from "@/components/footer";
 
@@ -38,6 +39,7 @@ const Index = () => {
         <LiveDemoSection />
         <TechnologySection />
         <ImpactSection />
+        <JudgePackSection />
       </main>
 
       <Footer onOpenDevelopersModal={() => setIsDevelopersModalOpen(true)} />

@@ -325,6 +325,37 @@
   }
 }
 
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus states for accessibility */
+.focus-visible {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 220 25% 70%;
+    --ring: 238 85% 50%;
+  }
+  
+  .dark {
+    --border: 220 25% 30%;
+    --ring: 238 85% 70%;
+  }
+}
+
 /* Responsive Typography */
 @media (max-width: 640px) {
   .hero-title {
@@ -335,5 +366,17 @@
   .hero-subtitle {
     font-size: 1.125rem;
     line-height: 1.5;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
   }
 }
