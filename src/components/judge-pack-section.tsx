@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Download, FileText, Users, Zap, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -14,6 +15,7 @@ export function JudgePackSection() {
     email: "",
     city: ""
   });
+  const navigate = useNavigate();
 
   const handleDownloadPack = () => {
     // Mock PDF download
@@ -27,21 +29,8 @@ export function JudgePackSection() {
 
   const handleRequestPilot = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock form submission with confetti effect
-    const confetti = document.createElement('div');
-    confetti.innerHTML = '🎉';
-    confetti.style.position = 'fixed';
-    confetti.style.top = '50%';
-    confetti.style.left = '50%';
-    confetti.style.fontSize = '50px';
-    confetti.style.zIndex = '9999';
-    confetti.style.pointerEvents = 'none';
-    document.body.appendChild(confetti);
-    
-    setTimeout(() => {
-      document.body.removeChild(confetti);
-      setIsModalOpen(false);
-    }, 2000);
+    navigate('/auth');
+    setIsModalOpen(false);
   };
 
   return (
