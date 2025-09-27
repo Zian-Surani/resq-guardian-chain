@@ -14,7 +14,196 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          alert_type: string | null
+          created_at: string
+          id: string
+          incident_id: string | null
+          latitude: number | null
+          longitude: number | null
+          message: string
+          status: Database["public"]["Enums"]["alert_status"] | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          alert_type?: string | null
+          created_at?: string
+          id?: string
+          incident_id?: string | null
+          latitude?: number | null
+          longitude?: number | null
+          message: string
+          status?: Database["public"]["Enums"]["alert_status"] | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          alert_type?: string | null
+          created_at?: string
+          id?: string
+          incident_id?: string | null
+          latitude?: number | null
+          longitude?: number | null
+          message?: string
+          status?: Database["public"]["Enums"]["alert_status"] | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_incident_id_fkey"
+            columns: ["incident_id"]
+            isOneToOne: false
+            referencedRelation: "incidents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      incidents: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          incident_type: Database["public"]["Enums"]["incident_type"]
+          is_active: boolean | null
+          latitude: number
+          location_id: string
+          longitude: number
+          resolved_at: string | null
+          severity: number | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          incident_type: Database["public"]["Enums"]["incident_type"]
+          is_active?: boolean | null
+          latitude: number
+          location_id: string
+          longitude: number
+          resolved_at?: string | null
+          severity?: number | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          incident_type?: Database["public"]["Enums"]["incident_type"]
+          is_active?: boolean | null
+          latitude?: number
+          location_id?: string
+          longitude?: number
+          resolved_at?: string | null
+          severity?: number | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "incidents_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      locations: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          latitude: number
+          longitude: number
+          name: string
+          safety_score: number | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          latitude: number
+          longitude: number
+          name: string
+          safety_score?: number | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          latitude?: number
+          longitude?: number
+          name?: string
+          safety_score?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_locations: {
+        Row: {
+          created_at: string
+          id: string
+          latitude: number
+          longitude: number
+          safety_score: number | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          latitude: number
+          longitude: number
+          safety_score?: number | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          latitude?: number
+          longitude?: number
+          safety_score?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +212,16 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      alert_status: "active" | "resolved" | "investigating"
+      incident_type:
+        | "stampede"
+        | "flood"
+        | "fire"
+        | "earthquake"
+        | "landslide"
+        | "accident"
+        | "medical_emergency"
+      user_role: "user" | "authority"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +348,18 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      alert_status: ["active", "resolved", "investigating"],
+      incident_type: [
+        "stampede",
+        "flood",
+        "fire",
+        "earthquake",
+        "landslide",
+        "accident",
+        "medical_emergency",
+      ],
+      user_role: ["user", "authority"],
+    },
   },
 } as const
